@@ -6,6 +6,6 @@ import org.junit.Test;
 public class SomethingTest {
     @Test
     public void test() {
-        Assert.assertEquals(1,1);
+        Assert.assertEquals(1,2);
     }
 }
