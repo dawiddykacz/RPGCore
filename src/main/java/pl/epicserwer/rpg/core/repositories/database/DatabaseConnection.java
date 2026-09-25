@@ -8,14 +8,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    static class Factory{
+    public static class Factory{
         private final String databaseUrl;
         private final DatabaseDTO databaseDTO;
 
         public Factory(DatabaseType databaseType, DatabaseDTO databaseDTO){
             this.databaseDTO = databaseDTO;
             this.databaseUrl = "jdbc:"+databaseType+"://"+databaseDTO.url()+":"+databaseDTO.port()
-                    +"/"+databaseDTO.password()+"?useSSL=false";
+                    +"/"+databaseDTO.database()+"?useSSL=false";
         }
 
         public DatabaseConnection create(){
@@ -25,7 +25,7 @@ public class DatabaseConnection {
 
     private final HikariDataSource hikariDataSource;
 
-    public DatabaseConnection(@Nonnull final String databaseUrl, @Nonnull final DatabaseDTO databaseDTO) {
+    private DatabaseConnection(@Nonnull final String databaseUrl, @Nonnull final DatabaseDTO databaseDTO) {
         HikariConfig config = new HikariConfig();
 
         config.setJdbcUrl(databaseUrl);

@@ -8,6 +8,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import pl.epicserwer.rpg.core.repositories.database.DatabaseConnection;
 import pl.epicserwer.rpg.core.repositories.database.DatabaseDTO;
+import pl.epicserwer.rpg.core.repositories.database.DatabaseType;
 
 import javax.annotation.Nonnull;
 import java.sql.Connection;
@@ -41,7 +42,14 @@ class AbstractSQLRepositoryTest {
                 mysql.getPassword()
         );
 
-        DatabaseConnection dbConnection = new DatabaseConnection(mysql.getJdbcUrl(), dto);
+        DatabaseConnection dbConnection = new DatabaseConnection.Factory(
+                DatabaseType.MYSQL,
+                new DatabaseDTO(new Name(mysql.getHost()),
+                        mysql.getFirstMappedPort(),
+                        new Name(mysql.getDatabaseName()),
+                        new Name(mysql.getUsername()),
+                        mysql.getPassword())
+        ).create();
 
         repository = new TestStringRepository(dbConnection);
     }
