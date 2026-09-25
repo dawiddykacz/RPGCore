@@ -1,4 +1,4 @@
-package pl.epicserwer.rpg.core.org.commons;
+package org.commons;
 
 import javax.annotation.Nonnull;
 
@@ -9,5 +9,10 @@ public class Name {
         if(name.isEmpty()) throw new IllegalArgumentException("Name cannot be empty");
 
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

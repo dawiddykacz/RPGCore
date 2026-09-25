@@ -1,5 +1,7 @@
 package pl.epicserwer.rpg.core.experience;
 
+import org.commons.experience.Experience;
+import org.commons.experience.Level;
 import pl.epicserwer.rpg.core.experience.required.RequiredExperienceService;
 
 import javax.annotation.Nonnull;
@@ -20,8 +22,7 @@ class ExperiencePlayerData {
         Level newLevel = this.playerLevel;
 
         while (!newExp.isLowerThan(
-                new Experience(requiredExperienceService.calculateRequiredExperience(
-                        newLevel.getLevelAsInt())))) {
+                requiredExperienceService.calculateRequiredExperience(newLevel))) {
             newLevel = newLevel.increaseLevel();
         }
 

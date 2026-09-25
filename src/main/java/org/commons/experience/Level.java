@@ -1,9 +1,13 @@
-package pl.epicserwer.rpg.core.experience;
+package org.commons.experience;
 
 import java.util.Objects;
 
-class Level {
+public class Level {
     private final int level;
+
+    public Level(){
+        this(1);
+    }
 
     public Level(int level) {
         if (level <= 0) throw new IllegalArgumentException("level must be greater than 0");

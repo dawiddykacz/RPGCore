@@ -1,9 +1,14 @@
-package pl.epicserwer.rpg.core.experience;
+package org.commons.experience;
 
 import java.util.Objects;
 
-class Experience {
+public class Experience {
+    public static Experience MAX_EXPERIENCE = new Experience(Long.MAX_VALUE - 10_000);
     private final long experience;
+
+    public Experience(){
+        this(0);
+    }
 
     public Experience(long experience) {
         if (experience < 0) throw new IllegalArgumentException("experience must be >= 0");

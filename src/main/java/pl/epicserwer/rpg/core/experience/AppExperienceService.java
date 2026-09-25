@@ -1,7 +1,9 @@
 package pl.epicserwer.rpg.core.experience;
 
+import org.commons.experience.Experience;
+import org.commons.experience.Level;
 import pl.epicserwer.rpg.core.experience.required.RequiredExperienceService;
-import pl.epicserwer.rpg.core.org.commons.Name;
+import org.commons.Name;
 
 import javax.annotation.Nonnull;
 
@@ -25,7 +27,7 @@ class AppExperienceService implements ExperienceService{
 
         System.out.println("Experience added: " + experience);
         System.out.println("level "+newExpData.getPlayerLevel()+", exp: "+newExpData.getPlayerExperience()+"/"+
-                this.requiredExperienceService.calculateRequiredExperience(newExpData.getPlayerLevel().getLevelAsInt()));
+                this.requiredExperienceService.calculateRequiredExperience(newExpData.getPlayerLevel()));
         return !experiencePlayerData.getPlayerLevel().equals(newExpData.getPlayerLevel());
     }
 }

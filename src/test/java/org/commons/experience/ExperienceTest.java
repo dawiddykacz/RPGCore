@@ -1,4 +1,4 @@
-package pl.epicserwer.rpg.core.experience;
+package org.commons.experience;
 
 import org.junit.jupiter.api.Test;
 
