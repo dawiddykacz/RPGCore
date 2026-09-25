@@ -15,7 +15,7 @@ public class DatabaseConnection {
         public Factory(DatabaseType databaseType, DatabaseDTO databaseDTO){
             this.databaseDTO = databaseDTO;
             this.databaseUrl = "jdbc:"+databaseType+"://"+databaseDTO.url()+":"+databaseDTO.port()
-                    +"/"+databaseDTO.database()+"?useSSL=false";
+                    +"/"+databaseDTO.database()+"?useSSL=false&allowPublicKeyRetrieval=true";
         }
 
         public DatabaseConnection create(){
